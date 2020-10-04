@@ -1,0 +1,25 @@
+<mat-card *ngIf="employee" class="example-card">
+    <mat-card-header class='mat-card-header'>
+        <img mat-card-avatar
+            src="https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg">
+    </mat-card-header>
+    <mat-card-subtitle class='rating' *ngIf="isRatingVisible">
+        <ngb-rating [starTemplate]="t" [rate]="employee.rating ? employee.rating : 0" (rateChange)="updateRating($event)" [max]="5" [readonly]="!isRatingEditable">
+        </ngb-rating>
+    </mat-card-subtitle>
+    <mat-card-content class='profile-content'>
+        <mat-card-title>{{employee.name}}</mat-card-title>
+        {{employee.role}}
+        <br/><br/>
+        <b>ID:</b> &nbsp;&nbsp; {{employee.id}} <br/>
+        <b>Email:</b> &nbsp;&nbsp; {{employee.email}} <br/>
+        <b>Department:</b> &nbsp;&nbsp; {{employee.department}} <br/>
+        <b>Manager:</b> &nbsp;&nbsp; {{manager$ | async}} <br/>
+        <b>Hobbies:</b> &nbsp;&nbsp; {{employee.hobbies}} <br/>
+        <b>Interests:</b> &nbsp;&nbsp; {{employee.interests}} <br/>
+    </mat-card-content>
+</mat-card>
+
+<ng-template class="ngb-rating" #t let-fill="fill" let-index="index">
+    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+</ng-template>

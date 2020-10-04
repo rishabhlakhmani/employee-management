@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button routerLinkActive="active" [routerLink]="['profile', currentEmployee.id]"> My Profile </a>
+        <a mat-button routerLinkActive="active" routerLink="employee-list"> Get All Employees </a>
+        <a mat-button (click)="logout()"> Logout </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>

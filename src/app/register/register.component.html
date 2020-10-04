@@ -1,0 +1,45 @@
+<mat-toolbar>
+    <span>Registration</span>
+</mat-toolbar>
+<mat-card class="my-card">
+    <form class="my-form" (ngSubmit)="register(registrationForm)" #registrationForm="ngForm">
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput placeholder="Name" name="name" required [(ngModel)]="registerFormValue.name"
+                    #name="ngModel">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Email" name="email" required
+                    [(ngModel)]="registerFormValue.email" #email="ngModel">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Role</mat-label>
+                <mat-select matNativeControl name="role" required [(ngModel)]="registerFormValue.role" #role="ngModel">
+                    <mat-option *ngFor="let role of roles" [value]="role">
+                        {{role}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Department</mat-label>
+                <input matInput placeholder="Department" name="department" [(ngModel)]="registerFormValue.department">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Hobbies</mat-label>
+                <input type="text" matInput placeholder="Hobbies" name="hobbies"
+                    [(ngModel)]="registerFormValue.hobbies">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Interests</mat-label>
+                <input type="text" matInput placeholder="Interests" name="interests"
+                    [(ngModel)]="registerFormValue.interests">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button type="submit" mat-raised-button [disabled]="!registrationForm.form.valid"
+                color="primary">REGISTER</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
